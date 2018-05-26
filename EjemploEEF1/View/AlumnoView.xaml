@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="{Binding Titulo}" Height="600" Width="800">
     <Grid>
-        <DataGrid ItemsSource="{Binding ListaAlumnos}"></DataGrid>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding ListaAlumnos}" AutoGenerateColumns="False" Margin="10" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Alumno Id" Binding="{Binding AlumnoId}"/>
+                <DataGridTextColumn Header="Carné" Binding="{Binding Carne}"/>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
+                <DataGridTextColumn Header="Carrera" Binding="{Binding Carrera.Descripcion}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

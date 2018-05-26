@@ -17,7 +17,7 @@ namespace EjemploEEF1.Model
         public string Apellidos { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int CarreraId { get; set; }
-        public int ClaseId { get; set; }
+        //public int ClaseId { get; set; }
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<ClaseAlumno> ClasesAlumnos { get; set; }
 
