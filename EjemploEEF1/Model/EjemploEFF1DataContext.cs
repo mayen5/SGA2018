@@ -36,6 +36,11 @@ namespace EjemploEEF1.Model
                .Property(n => n.Nombres)
                .IsRequired()
                .HasMaxLength(128);
+            modelBuilder.Entity<Alumno>()
+                .ToTable("Alumnos")
+                .Property(d => d.FechaNacimiento)
+                .HasColumnType("DateTime")
+                .HasPrecision(0);
 
             modelBuilder.Entity<Bitacora>()
                 .ToTable("Bitacoras");
