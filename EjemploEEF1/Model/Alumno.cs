@@ -20,6 +20,5 @@ namespace EjemploEEF1.Model
         //public int ClaseId { get; set; }
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<ClaseAlumno> ClasesAlumnos { get; set; }
-
     }
 }

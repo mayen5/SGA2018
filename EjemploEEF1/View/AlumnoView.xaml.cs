@@ -12,19 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using EjemploEEF1.ViewModel;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace EjemploEEF1.View
 {
     /// <summary>
     /// Lógica de interacción para AlumnoView.xaml
     /// </summary>
-    public partial class AlumnoView : Window
+    public partial class AlumnoView : MetroWindow
     {
         public AlumnoView()
         {
             InitializeComponent();
-            AlumnoViewModel modelo = new AlumnoViewModel();
+            AlumnoViewModel modelo = new AlumnoViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
+            this.tFechaNacimiento.SelectedDate = DateTime.Today;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

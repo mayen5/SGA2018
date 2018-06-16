@@ -13,19 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EjemploEEF1.View;
+using MahApps.Metro.Controls;
+using EjemploEEF1.ViewModel;
 
 namespace EjemploEEF1
 {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            AlumnoView ventana = new AlumnoView();
-            ventana.Show();
+            MainWindowViewModel modelo = new MainWindowViewModel();
+            this.DataContext = modelo;
         }
+
     }
 }
