@@ -325,6 +325,7 @@ namespace EjemploEEF1.ViewModel
             {
                 LimpiarCampos();
                 ActivarControles();
+                this._accion = ACCION.NUEVO;
 
 
             }
@@ -397,36 +398,61 @@ namespace EjemploEEF1.ViewModel
                         finally
                         {
                             DesactivarControles();
+                            this._accion = ACCION.NINGUNO;
                         }
                         break;
                     case ACCION.GUARDAR:
                         try
                         {
-                            Elemento.Apellidos = this.Apellidos;
-                            Elemento.Nombres = this.Nombres;
-                            Elemento.FechaNacimiento = this.FechaNacimiento;
-                            Elemento.Carrera = this.CarreraSeleccionada;
-                            _db.Entry(Elemento).State = EntityState.Modified;
-                            _db.Alumnos.Attach(Elemento);
-                            _db.SaveChanges();
+                            int posicion = ListaAlumnos.IndexOf(Elemento);
+                            var registro = _db.Alumnos.Find(Elemento.AlumnoId);
+
+                            if (registro != null)
+                            {
+                                Elemento.Apellidos = this.Apellidos;
+                                Elemento.Nombres = this.Nombres;
+                                Elemento.FechaNacimiento = this.FechaNacimiento;
+                                Elemento.Carrera = this.CarreraSeleccionada;
+                                _db.Entry(Elemento).State = EntityState.Modified;
+                                _db.SaveChanges();
+                                ListaAlumnos.RemoveAt(posicion);
+                                ListaAlumnos.Insert(posicion, registro);
+                            }
                         }
                         catch (Exception ex)
                         {
 
                             await this._dialogCoordinator.ShowMessageAsync(
                                     this,
-                                    "Actualizar Alumno",
+                                    "Editar Alumno",
                                     ex.Message);
                         }
                         finally
                         {
                             DesactivarControles();
+                            this._accion = ACCION.NINGUNO;
                         }
                         break;
                     default:
                         break;
                 }
 
+            }
+            else if (control.Equals("Editar"))
+            {
+                if (Elemento != null)
+                {
+                    ActivarControles();
+                    this.IsReadOnlyCarne = true;
+                    this._accion = ACCION.GUARDAR;
+                }
+                else
+                {
+                    await this._dialogCoordinator.ShowMessageAsync(
+                                    this,
+                                    "Editar Alumno",
+                                    "Debe seleccionar un elemento");
+                }
             }
         }
 
@@ -443,7 +469,6 @@ namespace EjemploEEF1.ViewModel
             this.IsEnableGuardar = false;
             this.IsEnableCancelar = false;
             
-            this._accion = ACCION.NINGUNO;
         }
 
         private void ActivarControles()
@@ -459,7 +484,6 @@ namespace EjemploEEF1.ViewModel
             this.IsEnableGuardar = true;
             this.IsEnableCancelar = true;
             
-            this._accion = ACCION.NUEVO;
         }
 
         private void LimpiarCampos()
