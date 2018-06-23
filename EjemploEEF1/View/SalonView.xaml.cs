@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using EjemploEEF1.ViewModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace EjemploEEF1.View
 {
@@ -24,7 +25,7 @@ namespace EjemploEEF1.View
         public SalonView()
         {
             InitializeComponent();
-            SalonViewModel modelo = new SalonViewModel();
+            SalonViewModel modelo = new SalonViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
         }
     }

@@ -32,10 +32,15 @@ namespace EjemploEEF1.Model
                 .IsRequired()
                 .HasMaxLength(7);
             modelBuilder.Entity<Alumno>()
-               .ToTable("Alumnos")
-               .Property(n => n.Nombres)
-               .IsRequired()
-               .HasMaxLength(128);
+                .ToTable("Alumnos")
+                .Property(n => n.Nombres)
+                .IsRequired()
+                .HasMaxLength(128);
+            modelBuilder.Entity<Alumno>()
+                .ToTable("Alumnos")
+                .Property(n => n.Apellidos)
+                .IsRequired()
+                .HasMaxLength(128);
             modelBuilder.Entity<Alumno>()
                 .ToTable("Alumnos")
                 .Property(d => d.FechaNacimiento)

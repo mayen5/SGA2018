@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace EjemploEEF1.Model
 {
@@ -17,7 +19,6 @@ namespace EjemploEEF1.Model
         public string Apellidos { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int CarreraId { get; set; }
-        //public int ClaseId { get; set; }
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<ClaseAlumno> ClasesAlumnos { get; set; }
     }

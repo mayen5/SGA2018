@@ -1,5 +1,6 @@
 ﻿using EjemploEEF1.ViewModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace EjemploEEF1.View
         public GrupoAcademicoView()
         {
             InitializeComponent();
-            GrupoAcademicoViewModel modelo = new GrupoAcademicoViewModel();
+            GrupoAcademicoViewModel modelo = new GrupoAcademicoViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
         }
     }

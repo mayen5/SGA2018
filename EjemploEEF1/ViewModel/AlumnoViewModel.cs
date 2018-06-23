@@ -409,11 +409,11 @@ namespace EjemploEEF1.ViewModel
 
                             if (registro != null)
                             {
-                                Elemento.Apellidos = this.Apellidos;
-                                Elemento.Nombres = this.Nombres;
-                                Elemento.FechaNacimiento = this.FechaNacimiento;
-                                Elemento.Carrera = this.CarreraSeleccionada;
-                                _db.Entry(Elemento).State = EntityState.Modified;
+                                registro.Apellidos = this.Apellidos;
+                                registro.Nombres = this.Nombres;
+                                registro.FechaNacimiento = this.FechaNacimiento;
+                                registro.Carrera = this.CarreraSeleccionada;
+                                _db.Entry(registro).State = EntityState.Modified;
                                 _db.SaveChanges();
                                 ListaAlumnos.RemoveAt(posicion);
                                 ListaAlumnos.Insert(posicion, registro);

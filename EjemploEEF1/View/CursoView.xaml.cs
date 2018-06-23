@@ -1,5 +1,6 @@
 ﻿using EjemploEEF1.ViewModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,9 @@ namespace EjemploEEF1.View
         public CursoView()
         {
             InitializeComponent();
-            CursoViewModel modelo = new CursoViewModel();
+            CursoViewModel modelo = new CursoViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
         }
+
     }
 }
