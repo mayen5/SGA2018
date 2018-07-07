@@ -1,0 +1,46 @@
+﻿<Controls:MetroWindow x:Class="EjemploEEF1.View.CursoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EjemploEEF1.View"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        WindowStartupLocation="CenterScreen"                      
+        mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="400" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Descripcion" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="26.667"/>
+        <TextBox Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="Ingrese la Descripción" IsReadOnly="{Binding IsReadOnlyDescripcion}" x:Name="txtDescripcion" Grid.Row="0" Grid.Column="1" Text="{Binding Descripcion}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24"/>
+        <DataGrid Style="{StaticResource AzureDataGrid}" SelectedItem="{Binding Elemento}" Margin="5,10,5,5" CanUserAddRows="False" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" x:Name="dataGrid" ItemsSource="{Binding ListaCursos}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="IsSelected"
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
+                                        />
+                <DataGridTextColumn Header="Id" Binding="{Binding CursoId}"/>
+                <DataGridTextColumn Header="Curso" Binding="{Binding Descripcion}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Margin="5" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding Instancia}" CommandParameter="Nuevo" IsEnabled="{Binding IsEnableNuevo}" FontSize="26.667" Content="Nuevo"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding Instancia}" CommandParameter="Eliminar" IsEnabled="{Binding IsEnableEliminar}" FontSize="26.667" Content="Eliminar"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding Instancia}" CommandParameter="Editar" IsEnabled="{Binding IsEnableEditar}" FontSize="26.667" Content="Editar" />
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding Instancia}" CommandParameter="Guardar" IsEnabled="{Binding IsEnableGuardar}" FontSize="26.667" Content="Guardar"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" Command="{Binding Instancia}" CommandParameter="Cancelar" IsEnabled="{Binding IsEnableCancelar}" FontSize="26.667" Content="Cancelar" />
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

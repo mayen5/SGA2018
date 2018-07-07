@@ -1,0 +1,52 @@
+﻿<Controls:MetroWindow x:Class="EjemploEEF1.MainWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EjemploEEF1"
+        WindowState="Maximized"                      
+        mc:Ignorable="d"
+        TitleAlignment="Center"
+        Title="Sistema de Control Académico" Height="350" Width="525">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="Carmelo Mayen" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                   Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_user}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Login" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands>
+            <StackPanel Name="MenuPrincipal" Orientation="Horizontal">
+                <Menu>
+                    <MenuItem Name="Catalogos" Header="Catalogos">
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Alumnos" Name="Alumnos" Header="Alumnos"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Carreras" Name="Carreras" Header="Carreras"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Salones" Name="Salones" Header="Salones"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Puestos" Name="Puestos" Header="Puestos"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Cursos" Name="Cursos" Header="Cursos"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="GruposAcademicos" Name="GruposAcademicos" Header="Grupos Academicos"/>
+                    </MenuItem>
+                    <MenuItem Name="Reportes" Header="Reportes">
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="ReporteAlumnos" Name="ReporteAlumnos" Header="Alumnos"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="ReporteCursos" Name="ReporteCursos" Header="Cursos"/>
+                    </MenuItem>
+
+                </Menu>
+            </StackPanel>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
+</Controls:MetroWindow>
