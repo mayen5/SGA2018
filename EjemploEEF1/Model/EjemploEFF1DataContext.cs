@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace EjemploEEF1.Model
 {
-    class EjemploEFF1DataContext : DbContext
+    public class EjemploEFF1DataContext : DbContext
     {
         public DbSet<Alumno> Alumnos { get; set; }
         public DbSet<Bitacora> Bitacoras { get; set; }

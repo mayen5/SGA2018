@@ -17,7 +17,7 @@ namespace EjemploEEF1.Model
         public TimeSpan HoraFin { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFinal { get; set; }
-        public int SalondId { get; set; }
+        public int SalonId { get; set; }
         public int GrupoAcademicoId { get; set; }
         public int ProfesorId { get; set; }
         public int CursoId { get; set; }
@@ -25,7 +25,7 @@ namespace EjemploEEF1.Model
         public virtual GrupoAcademico GrupoAcademico { get; set; }
         public virtual Profesor Profesor { get; set; }
         public virtual Curso Curso { get; set; }
-        public virtual ICollection<ClaseAlumno> ClasesAlumnos { get; set; }
+        public virtual ICollection<ClaseAlumno> ClaseAlumnos { get; set; }
 
     }
 }

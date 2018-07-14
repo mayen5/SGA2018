@@ -36,3 +36,4 @@ C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploE
 C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploEEF1\obj\Debug\App.baml
 C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploEEF1\obj\Debug\Resources\Icons.baml
 C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploEEF1\obj\Debug\Resources\IconsNonShared.baml
+C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploEEF1\obj\Debug\EjemploEEF1.csprojResolveAssemblyReference.cache
