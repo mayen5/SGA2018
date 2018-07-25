@@ -24,7 +24,7 @@ namespace EjemploEEF1.Model
         public virtual Salon Salon { get; set; }
         public virtual GrupoAcademico GrupoAcademico { get; set; }
         public virtual Profesor Profesor { get; set; }
-        public virtual Curso Curso { get; set; }
+        public virtual ProfesorCurso Curso { get; set; }
         public virtual ICollection<ClaseAlumno> ClaseAlumnos { get; set; }
 
     }

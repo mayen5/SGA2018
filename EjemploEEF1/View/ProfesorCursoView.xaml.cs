@@ -18,16 +18,15 @@ using System.Windows.Shapes;
 namespace EjemploEEF1.View
 {
     /// <summary>
-    /// Lógica de interacción para CursoView.xaml
+    /// Lógica de interacción para ProfesorCurso.xaml
     /// </summary>
-    public partial class CursoView : MetroWindow
+    public partial class ProfesorCursoView : MetroWindow
     {
-        public CursoView()
+        public ProfesorCursoView()
         {
             InitializeComponent();
             ProfesorCursoViewModel modelo = new ProfesorCursoViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
         }
-
     }
 }

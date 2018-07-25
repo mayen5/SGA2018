@@ -17,7 +17,7 @@ namespace EjemploEEF1.Model
         public DbSet<ClaseAlumno> ClasesAlumnos { get; set; }
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<GrupoAcademico> GruposAcademicos { get; set; }
-        public DbSet<Profesor> Profedores { get; set; }
+        public DbSet<Profesor> Profesores { get; set; }
         public DbSet<ProfesorCurso> ProfesoresCursos { get; set; }       
         public DbSet<Puesto> Puestos { get; set; }
         public DbSet<Rol> Roles { get; set; }

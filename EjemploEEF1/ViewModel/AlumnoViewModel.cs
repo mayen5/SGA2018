@@ -454,6 +454,11 @@ namespace EjemploEEF1.ViewModel
                                     "Debe seleccionar un elemento");
                 }
             }
+            else if (control.Equals("Cancelar"))
+            {
+                DesactivarControles();
+                this._accion = ACCION.NINGUNO;
+            }
         }
 
         private void DesactivarControles()

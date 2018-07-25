@@ -12,9 +12,7 @@ using System.Windows.Input;
 
 namespace EjemploEEF1.ViewModel
 {
-
-
-    class CursoViewModel : INotifyPropertyChanged, ICommand
+    class ProfesorCursoViewModel : INotifyPropertyChanged, ICommand
     {
         private EjemploEFF1DataContext _db = new EjemploEFF1DataContext();
 
@@ -32,9 +30,9 @@ namespace EjemploEEF1.ViewModel
 
         private ACCION _accion = ACCION.NINGUNO;
 
-        private Curso _elemento;
+        private ProfesorCurso _elemento;
 
-        public Curso Elemento
+        public ProfesorCurso Elemento
         {
             get { return _elemento; }
             set
@@ -42,15 +40,17 @@ namespace EjemploEEF1.ViewModel
                 _elemento = value;
                 if (value != null)
                 {
-                    this.Descripcion = value.Descripcion;
+                    this.CursoSeleccionado = value.Curso;
+                    this.ProfesorSeleccionado = value.Profesor;
+                    this.Tutor = value.Tutor;
                 }
                 NotificarCambio("Elemento");
             }
         }
 
-        private CursoViewModel _instancia;
+        private ProfesorCursoViewModel _instancia;
 
-        public CursoViewModel Instancia
+        public ProfesorCursoViewModel Instancia
         {
             get { return _instancia; }
             set
@@ -68,19 +68,68 @@ namespace EjemploEEF1.ViewModel
             set { _titulo = value; }
         }
 
-        private ObservableCollection<Curso> _listaCursos;
+        private ObservableCollection<ProfesorCurso> _listaProfesoresCursos;
 
-        public ObservableCollection<Curso> ListaCursos
+        public ObservableCollection<ProfesorCurso> ListaProfesoresCursos
         {
             get
             {
-                if (_listaCursos != null)
+                if (_listaProfesoresCursos != null)
+                {
+                    return _listaProfesoresCursos;
+                }
+                else
+                {
+                    _listaProfesoresCursos = new ObservableCollection<ProfesorCurso>(_db.ProfesoresCursos.ToList());
+                    return _listaProfesoresCursos;
+                }
+            }
+            set
+            {
+                _listaProfesoresCursos = value;
+                NotificarCambio("ListaProfesoresCursos");
+            }
+        }
+
+
+        private string _tutor;
+
+        public string Tutor
+        {
+            get { return _tutor; }
+            set
+            {
+                _tutor = value;
+                NotificarCambio("Tutor");
+            }
+        }
+
+        //
+        private Curso _cursoSeleccionado;
+
+        public Curso CursoSeleccionado
+        {
+            get { return _cursoSeleccionado; }
+            set
+            {
+                _cursoSeleccionado = value;
+                NotificarCambio("CursoSeleccionado");
+            }
+        }
+
+        private List<Curso> _listaCursos;
+
+        public List<Curso> ListaCursos
+        {
+            get
+            {
+                if (_listaCursos !=null)
                 {
                     return _listaCursos;
                 }
                 else
                 {
-                    _listaCursos = new ObservableCollection<Curso>(_db.Cursos.ToList());
+                    _listaCursos = _db.Cursos.ToList();
                     return _listaCursos;
                 }
             }
@@ -91,28 +140,78 @@ namespace EjemploEEF1.ViewModel
             }
         }
 
+        //
 
-        private string _descripcion;
 
-        public string Descripcion
+        private Profesor _profesorSeleccionado;
+
+        public Profesor ProfesorSeleccionado
         {
-            get { return _descripcion; }
+            get { return _profesorSeleccionado; }
             set
             {
-                _descripcion = value;
-                NotificarCambio("Descripcion");
+                _profesorSeleccionado = value;
+                NotificarCambio("ProfesorSeleccionado");
             }
         }
 
-        private bool _isReadOnlyDescripcion = true;
+        private List<Profesor> _listaProfesores;
 
-        public bool IsReadOnlyDescripcion
+        public List<Profesor> ListaProfesores
         {
-            get { return _isReadOnlyDescripcion; }
+            get
+            {
+                if (_listaProfesores != null)
+                {
+                    return _listaProfesores;
+                }
+                else
+                {
+                    _listaProfesores = _db.Profesores.ToList();
+                    return _listaProfesores;
+                }
+            }
             set
             {
-                _isReadOnlyDescripcion = value;
-                NotificarCambio("IsReadOnlyDescripcion");
+                _listaProfesores = value;
+                NotificarCambio("ListaProfesores");
+            }
+        }
+
+        private bool _IsEnabledCurso = false;
+
+        public bool IsEnabledCurso
+        {
+            get { return _IsEnabledCurso; }
+            set
+            {
+                _IsEnabledCurso = value;
+                NotificarCambio("IsEnabledCurso");
+            }
+        }
+
+        private bool _IsEnabledProfesor = false;
+
+        public bool IsEnabledProfesor
+        {
+            get { return _IsEnabledProfesor; }
+            set
+            {
+                _IsEnabledProfesor = value;
+                NotificarCambio("IsEnabledProfesor");
+            }
+        }
+
+
+        private bool _isReadOnlyTutor = true;
+
+        public bool IsReadOnlyTutor
+        {
+            get { return _isReadOnlyTutor; }
+            set
+            {
+                _isReadOnlyTutor = value;
+                NotificarCambio("IsReadOnlyTutor");
             }
         }
 
@@ -200,16 +299,16 @@ namespace EjemploEEF1.ViewModel
                 {
                     MessageDialogResult resultado = await this._dialogCoordinator.ShowMessageAsync(
                     this,
-                    "Eliminar Curso",
+                    "Eliminar ProfesorCurso",
                     "Esta seguro de eliminar el registro?",
                     MessageDialogStyle.AffirmativeAndNegative);
                     if (resultado == MessageDialogResult.Affirmative)
                     {
                         try
                         {
-                            _db.Cursos.Remove(Elemento);
+                            _db.ProfesoresCursos.Remove(Elemento);
                             _db.SaveChanges();
-                            this.ListaCursos.Remove(Elemento);
+                            this.ListaProfesoresCursos.Remove(Elemento);
                             LimpiarCampos();
                         }
                         catch (Exception ex)
@@ -239,14 +338,16 @@ namespace EjemploEEF1.ViewModel
                     case ACCION.NUEVO:
                         try
                         {
-                            var registro = new Curso
+                            var registro = new ProfesorCurso
                             {
-                                Descripcion = this.Descripcion
+                                Curso = this.CursoSeleccionado,
+                                Profesor = this.ProfesorSeleccionado,
+                                Tutor = this.Tutor
                             };
 
-                            _db.Cursos.Add(registro);
+                            _db.ProfesoresCursos.Add(registro);
                             _db.SaveChanges();
-                            this.ListaCursos.Add(registro);
+                            this.ListaProfesoresCursos.Add(registro);
                         }
                         catch (Exception ex)
                         {
@@ -265,16 +366,18 @@ namespace EjemploEEF1.ViewModel
                     case ACCION.GUARDAR:
                         try
                         {
-                            int posicion = ListaCursos.IndexOf(Elemento);
-                            var registro = _db.Cursos.Find(Elemento.CursoId);
+                            int posicion = ListaProfesoresCursos.IndexOf(Elemento);
+                            var registro = _db.ProfesoresCursos.Find(Elemento.CursoId);
 
                             if (registro != null)
                             {
-                                registro.Descripcion = this.Descripcion;
+                                registro.Curso = this.CursoSeleccionado;
+                                registro.Profesor = this.ProfesorSeleccionado;
+                                registro.Tutor = this.Tutor;
                                 _db.Entry(registro).State = EntityState.Modified;
                                 _db.SaveChanges();
-                                ListaCursos.RemoveAt(posicion);
-                                ListaCursos.Insert(posicion, registro);
+                                ListaProfesoresCursos.RemoveAt(posicion);
+                                ListaProfesoresCursos.Insert(posicion, registro);
                             }
                         }
                         catch (Exception ex)
@@ -323,7 +426,9 @@ namespace EjemploEEF1.ViewModel
             this.IsEnableNuevo = true;
             this.IsEnableEliminar = true;
             this.IsEnableEditar = true;
-            this.IsReadOnlyDescripcion = true;
+            this.IsReadOnlyTutor = true;
+            this.IsEnabledCurso = false;
+            this.IsEnabledProfesor = false;
             this.IsEnableGuardar = false;
             this.IsEnableCancelar = false;
 
@@ -334,7 +439,9 @@ namespace EjemploEEF1.ViewModel
             this.IsEnableNuevo = false;
             this.IsEnableEliminar = false;
             this.IsEnableEditar = false;
-            this.IsReadOnlyDescripcion = false;
+            this.IsReadOnlyTutor = false;
+            this.IsEnabledCurso = true;
+            this.IsEnabledProfesor = true;
             this.IsEnableGuardar = true;
             this.IsEnableCancelar = true;
 
@@ -342,12 +449,12 @@ namespace EjemploEEF1.ViewModel
 
         private void LimpiarCampos()
         {
-            this.Descripcion = string.Empty;
+            this.Tutor = string.Empty;
         }
 
-        public CursoViewModel(IDialogCoordinator dialogCoordinator)
+        public ProfesorCursoViewModel(IDialogCoordinator dialogCoordinator)
         {
-            this.Titulo = "Ventana Cursos";
+            this.Titulo = "Ventana Profesores Cursos";
             this.Instancia = this;
             this._dialogCoordinator = dialogCoordinator;
         }

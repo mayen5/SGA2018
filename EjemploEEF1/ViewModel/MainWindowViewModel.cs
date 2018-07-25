@@ -58,6 +58,16 @@ namespace EjemploEEF1.ViewModel
                 GrupoAcademicoView ventana = new GrupoAcademicoView();
                 ventana.ShowDialog();
             }
+            else if (objeto.Equals("Profesores"))
+            {
+                ProfesorView ventana = new ProfesorView();
+                ventana.ShowDialog();
+            }
+            else if (objeto.Equals("ProfesoresCursos"))
+            {
+                ProfesorCursoView ventana = new ProfesorCursoView();
+                ventana.ShowDialog();
+            }
         }
     }
 }

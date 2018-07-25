@@ -39,6 +39,8 @@
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Puestos" Name="Puestos" Header="Puestos"/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Cursos" Name="Cursos" Header="Cursos"/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="GruposAcademicos" Name="GruposAcademicos" Header="Grupos Academicos"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Profesores" Name="Profesores" Header="Profesores"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="ProfesoresCursos" Name="ProfesoresCursos" Header="Profesores Cursos"/>
                     </MenuItem>
                     <MenuItem Name="Reportes" Header="Reportes">
                         <MenuItem Command="{Binding Instancia}" CommandParameter="ReporteAlumnos" Name="ReporteAlumnos" Header="Alumnos"/>

@@ -1,7 +1,4 @@
-﻿using EjemploEEF1.ViewModel;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EjemploEEF1.ViewModel;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace EjemploEEF1.View
 {
     /// <summary>
-    /// Lógica de interacción para CursoView.xaml
+    /// Lógica de interacción para ProfesorView.xaml
     /// </summary>
-    public partial class CursoView : MetroWindow
+    public partial class ProfesorView : MetroWindow
     {
-        public CursoView()
+        public ProfesorView()
         {
             InitializeComponent();
-            ProfesorCursoViewModel modelo = new ProfesorCursoViewModel(DialogCoordinator.Instance);
+            ProfesorViewModel modelo = new ProfesorViewModel(DialogCoordinator.Instance);
             this.DataContext = modelo;
+            this.tFechaNacimiento.SelectedDate = DateTime.Today;
         }
-
     }
 }

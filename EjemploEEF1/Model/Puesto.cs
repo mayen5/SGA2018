@@ -12,7 +12,11 @@ namespace EjemploEEF1.Model
         [Key]
         public int PuestoId { get; set; }
         public string Descripcion { get; set; }
-
         public virtual ICollection<Profesor> Profesores { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.PuestoId} | {this.Descripcion}";
+        }
     }
 }

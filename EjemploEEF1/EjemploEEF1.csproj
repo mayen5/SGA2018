@@ -96,6 +96,8 @@
     <Compile Include="ViewModel\CursoViewModel.cs" />
     <Compile Include="ViewModel\GrupoAcademicoViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\ProfesorCursoViewModel.cs" />
+    <Compile Include="ViewModel\ProfesorViewModel.cs" />
     <Compile Include="ViewModel\PuestoViewModel.cs" />
     <Compile Include="ViewModel\SalonViewModel.cs" />
     <Compile Include="View\AlumnoView.xaml.cs">
@@ -109,6 +111,12 @@
     </Compile>
     <Compile Include="View\GrupoAcademicoView.xaml.cs">
       <DependentUpon>GrupoAcademicoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfesorCursoView.xaml.cs">
+      <DependentUpon>ProfesorCursoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfesorView.xaml.cs">
+      <DependentUpon>ProfesorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PuestoView.xaml.cs">
       <DependentUpon>PuestoView.xaml</DependentUpon>
@@ -149,6 +157,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GrupoAcademicoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfesorCursoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfesorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
