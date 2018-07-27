@@ -68,6 +68,16 @@ namespace EjemploEEF1.ViewModel
                 ProfesorCursoView ventana = new ProfesorCursoView();
                 ventana.ShowDialog();
             }
+            else if (objeto.Equals("Clases"))
+            {
+                ClaseView ventana = new ClaseView();
+                ventana.ShowDialog();
+            }
+            else if (objeto.Equals("ClasesAlumnos"))
+            {
+                ClaseAlumnoView ventana = new ClaseAlumnoView();
+                ventana.ShowDialog();
+            }
         }
     }
 }

@@ -93,6 +93,8 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\AlumnoViewModel.cs" />
     <Compile Include="ViewModel\CarreraViewModel.cs" />
+    <Compile Include="ViewModel\ClaseAlumnoViewModel.cs" />
+    <Compile Include="ViewModel\ClaseViewModel.cs" />
     <Compile Include="ViewModel\CursoViewModel.cs" />
     <Compile Include="ViewModel\GrupoAcademicoViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -105,6 +107,12 @@
     </Compile>
     <Compile Include="View\CarreraView.xaml.cs">
       <DependentUpon>CarreraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClaseAlumnoView.xaml.cs">
+      <DependentUpon>ClaseAlumnoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClaseView.xaml.cs">
+      <DependentUpon>ClaseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CursoView.xaml.cs">
       <DependentUpon>CursoView.xaml</DependentUpon>
@@ -149,6 +157,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CarreraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClaseAlumnoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClaseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

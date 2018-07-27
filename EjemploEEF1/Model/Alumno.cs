@@ -21,5 +21,10 @@ namespace EjemploEEF1.Model
         public int CarreraId { get; set; }
         public virtual Carrera Carrera { get; set; }
         public virtual ICollection<ClaseAlumno> ClasesAlumnos { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.AlumnoId} | {this.Nombres + " " + this.Apellidos}";
+        }
     }
 }

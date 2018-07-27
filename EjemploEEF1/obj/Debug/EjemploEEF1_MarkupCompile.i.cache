@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\cmayen\Documents\Visual Studio 2015\Projects\Kinal\EjemploEEF1\EjemploEEF1\App.xaml
-11-1161419113
+13-1411510369
 
-401221339739
+44483626873
 19-2142413902
-MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\AlumnoView.xaml;View\CarreraView.xaml;View\CursoView.xaml;View\GrupoAcademicoView.xaml;View\ProfesorCursoView.xaml;View\ProfesorView.xaml;View\PuestoView.xaml;View\SalonView.xaml;
+MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\AlumnoView.xaml;View\CarreraView.xaml;View\ClaseAlumnoView.xaml;View\ClaseView.xaml;View\CursoView.xaml;View\GrupoAcademicoView.xaml;View\ProfesorCursoView.xaml;View\ProfesorView.xaml;View\PuestoView.xaml;View\SalonView.xaml;
 
-True
+False
 

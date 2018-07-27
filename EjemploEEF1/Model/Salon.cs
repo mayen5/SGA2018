@@ -14,5 +14,10 @@ namespace EjemploEEF1.Model
         public string Descripcion { get; set; }
 
         public virtual ICollection<Clase> Clases { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.SalonId} | {this.Descripcion}";
+        }
     }
 }
